@@ -1,0 +1,15 @@
+---
+
+- hosts: web_servers
+  become: true
+  tasks:
+    - name: install apache2
+      tags: apache2,ubuntu
+      apt:
+        name: apache2
+        state: latest
+      when: ansible_distribution == "Ubuntu"
+    - name: install nikto
+      tags: nikto
+      apt:
+        name: nikto

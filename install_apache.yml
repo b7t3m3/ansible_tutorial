@@ -3,13 +3,11 @@
 - hosts: all
   become: true
   tasks:
-  
-  - name: install apache2 package
-    apt:
-      name: apache2
+
+  - name: install apache2 and php package
+    package:
+      name:
+      - "{{ apache_package }}"
+      - "{{ php_package }}"
       state: latest
-  
-  - name: install apache2 php library
-    apt:
-       name: libapache2-mod-php
-       state: latest
+    
